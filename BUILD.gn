@@ -1,0 +1,7 @@
+# Copyright by zhaosong in 2023, All Rights Reserved.
+
+executable("demo"){
+    sources = ["demo.cc"]
+    deps = ["//googletest:google_test",
+    "//googletest:gtest_main"]
+}

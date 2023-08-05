@@ -1,0 +1,44 @@
+# Copyright by zhaosong in 2023, All Rights Reserved.
+
+config("google_test_config") {
+  include_dirs += [
+    "googletest/include",
+    "googletest",
+    "googlemock/include",
+  ]
+}
+
+source_set("google_test") {
+  sources = [
+    "googletest/src/gtest-assertion-result.cc",
+    "googletest/src/gtest-death-test.cc",
+    "googletest/src/gtest-filepath.cc",
+    "googletest/src/gtest-internal-inl.h",
+    "googletest/src/gtest-matchers.cc",
+    "googletest/src/gtest-port.cc",
+    "googletest/src/gtest-printers.cc",
+    "googletest/src/gtest-test-part.cc",
+    "googletest/src/gtest-typed-test.cc",
+    "googletest/src/gtest.cc",
+  ]
+
+  all_dependent_configs = [ ":google_test_config" ]
+}
+
+source_set("google_mock") {
+  sources = [
+    "googlemock/src/gmock-cardinalities.cc",
+    "googlemock/src/gmock-internal-utils.cc",
+    "googlemock/src/gmock-matchers.cc",
+    "googlemock/src/gmock-spec-builders.cc",
+    "googlemock/src/gmock.cc",
+    "googlemock/src/gmock_main.cc",
+  ]
+
+  deps = [ ":google_test" ]
+}
+
+source_set("gtest_main") {
+  sources = [ "googletest/src/gtest_main.cc" ]
+  configs += [ ":google_test_config" ]
+}
