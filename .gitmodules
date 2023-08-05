@@ -1,0 +1,3 @@
+[submodule "build"]
+	path = build
+	url = git@gitee.com:zhaosong-lmm_admin/build.git
